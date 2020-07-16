@@ -74,4 +74,11 @@ public class AppTest {
 			System.out.println(usuario.getLogin());
 		}
 	}
-}
+	
+	@Test
+	public void consultaPorNomeParametro() {
+		Usuario usuario = springDataUsuario.buscaPorNomeParametro("Cauê");
+			System.out.println(usuario.getLogin());
+		}
+	}
+
