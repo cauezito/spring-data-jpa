@@ -100,8 +100,8 @@ public class AppTest {
 	public void inserirTelefone() {
 		Optional<Usuario> usuario = springDataUsuario.findById(2L);
 		Telefone telefone = new Telefone();
-		telefone.setTipo("celular");
-		telefone.setNumero("958945421");
+		telefone.setTipo("casa");
+		telefone.setNumero("1158475124");
 		telefone.setUsuario(usuario.get());
 		springDataTelefone.save(telefone);
 	}

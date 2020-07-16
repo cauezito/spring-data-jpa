@@ -8,8 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Usuario {
+	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -20,42 +28,6 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuario", orphanRemoval = true )
 	private List<Telefone> telefones;
 	
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public Integer getIdade() {
-		return idade;
-	}
-	public void setIdade(Integer idade) {
-		this.idade = idade;
-	}
-	public List<Telefone> getTelefones() {
-		return telefones;
-	}
-	public void setTelefones(List<Telefone> telefones) {
-		this.telefones = telefones;
-	}
+
 	
 }
