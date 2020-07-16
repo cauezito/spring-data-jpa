@@ -13,13 +13,13 @@
 
     <!-- Ativa recursos automáticos no Spring como Injeção de Dependecia por anotações -->
 	<context:annotation-config />
-	<context:component-scan base-package="br.com.cauezito.test.spring.model" />
+	<context:component-scan base-package="br.com.cauezito.spring.model" />
 
 
      <!-- Define o DataSource e a conexão com o banco de dados -->
      <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
          <property name="driverClassName" value="org.postgresql.Driver"/>
-         <property name="url" value="jdbc:postgresql://localhost:5432/	"/>
+         <property name="url" value="jdbc:postgresql://localhost:5432/spring-data"/>
          <property name="username" value="postgres"/>
          <property name="password" value="134679ca"/>
      </bean>
