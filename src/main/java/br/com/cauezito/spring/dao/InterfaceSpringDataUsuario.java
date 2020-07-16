@@ -25,4 +25,9 @@ public interface InterfaceSpringDataUsuario extends CrudRepository<Usuario, Long
 	@Transactional //para que seja possível excluir e commitar
 	@Query(value = "delete from Usuario u where u.nome = ?1")
 	public void deletaPorNome(String nome);
+	
+	@Modifying
+	@Transactional
+	@Query("update Usuario u set u.senha = ?1 where u.login = ?2")
+	public void alteraSenha(String senha, String usuario);
 }

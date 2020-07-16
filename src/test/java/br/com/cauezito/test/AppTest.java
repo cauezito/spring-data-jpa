@@ -85,4 +85,9 @@ public class AppTest {
 	public void deletaPorNome() {
 		springDataUsuario.deletaPorNome("deletavel");
 	}
+	
+	@Test
+	public void alteraSenha() {
+		springDataUsuario.alteraSenha("Capricornio12455862", "amanda");
+	}
 }
