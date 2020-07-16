@@ -1,5 +1,6 @@
 package br.com.cauezito.test;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -63,7 +64,14 @@ public class AppTest {
 	public void deletar() {
 		//springDataUsuario.deleteById(3L);
 		Optional<Usuario> usuario = springDataUsuario.findById(3L);
-		springDataUsuario.delete(usuario.get());
-		
+		springDataUsuario.delete(usuario.get());		
+	}
+	
+	@Test
+	public void consultaPorNome() {
+		List<Usuario> usuarios = springDataUsuario.buscaPorNome("Amanda");
+		for (Usuario usuario : usuarios) {
+			System.out.println(usuario.getLogin());
+		}
 	}
 }
