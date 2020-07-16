@@ -58,4 +58,12 @@ public class AppTest {
 		springDataUsuario.save(data);
 
 	}
+	
+	@Test
+	public void deletar() {
+		//springDataUsuario.deleteById(3L);
+		Optional<Usuario> usuario = springDataUsuario.findById(3L);
+		springDataUsuario.delete(usuario.get());
+		
+	}
 }
