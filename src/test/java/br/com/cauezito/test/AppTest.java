@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import br.com.cauezito.spring.dao.InterfaceSpringDataTelefone;
 import br.com.cauezito.spring.dao.InterfaceSpringDataUsuario;
+import br.com.cauezito.spring.model.Telefone;
 import br.com.cauezito.spring.model.Usuario;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,6 +20,9 @@ public class AppTest {
 
 	@Autowired
 	private InterfaceSpringDataUsuario springDataUsuario;
+	
+	@Autowired
+	private InterfaceSpringDataTelefone springDataTelefone;
 
 	@Test
 	public void criarTabela() {
@@ -89,5 +94,15 @@ public class AppTest {
 	@Test
 	public void alteraSenha() {
 		springDataUsuario.alteraSenha("Capricornio12455862", "amanda");
+	}
+	
+	@Test
+	public void inserirTelefone() {
+		Optional<Usuario> usuario = springDataUsuario.findById(2L);
+		Telefone telefone = new Telefone();
+		telefone.setTipo("celular");
+		telefone.setNumero("958945421");
+		telefone.setUsuario(usuario.get());
+		springDataTelefone.save(telefone);
 	}
 }
