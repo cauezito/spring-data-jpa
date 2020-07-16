@@ -1,5 +1,7 @@
 package br.com.cauezito.test;
 
+import java.util.Optional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,12 @@ public class AppTest {
 		usuario.setNome("Cauê");
 		
 		springDataUsuario.save(usuario);
+	}
+	
+	@Test
+	public void consultar() {
+		Optional<Usuario> usuario = springDataUsuario.findById(2L);
+		System.out.println(usuario.get().getNome());
 	}
 
 
