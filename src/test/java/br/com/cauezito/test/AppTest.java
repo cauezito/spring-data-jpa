@@ -13,17 +13,17 @@ import br.com.cauezito.spring.dao.InterfaceSpringDataUsuario;
 import br.com.cauezito.spring.model.Usuario;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring-config.xml"})
+@ContextConfiguration(locations = { "classpath:META-INF/spring-config.xml" })
 public class AppTest {
 
 	@Autowired
 	private InterfaceSpringDataUsuario springDataUsuario;
-	
+
 	@Test
 	public void criarTabela() {
 		System.out.println("criando tabela...");
 	}
-	
+
 	@Test
 	public void inserir() {
 		Usuario usuario = new Usuario();
@@ -31,20 +31,20 @@ public class AppTest {
 		usuario.setLogin("cauezito");
 		usuario.setSenha("123@987");
 		usuario.setNome("Cauê");
-		
+
 		springDataUsuario.save(usuario);
 	}
-	
+
 	@Test
 	public void consultar() {
 		Optional<Usuario> usuario = springDataUsuario.findById(2L);
 		System.out.println(usuario.get().getNome());
 	}
-	
+
 	@Test
 	public void todosOsRegistros() {
 		Iterable<Usuario> lista = springDataUsuario.findAll();
-		
+
 		for (Usuario usuario : lista) {
 			System.out.println(usuario.getNome());
 		}
@@ -54,19 +54,19 @@ public class AppTest {
 	public void atualizaRegistro() {
 		Optional<Usuario> usuario = springDataUsuario.findById(2L);
 		Usuario data = usuario.get();
-		
+
 		data.setNome("Amanda Marques");
 		springDataUsuario.save(data);
 
 	}
-	
+
 	@Test
 	public void deletar() {
-		//springDataUsuario.deleteById(3L);
+		// springDataUsuario.deleteById(3L);
 		Optional<Usuario> usuario = springDataUsuario.findById(3L);
-		springDataUsuario.delete(usuario.get());		
+		springDataUsuario.delete(usuario.get());
 	}
-	
+
 	@Test
 	public void consultaPorNome() {
 		List<Usuario> usuarios = springDataUsuario.buscaPorNome("Amanda");
@@ -74,11 +74,15 @@ public class AppTest {
 			System.out.println(usuario.getLogin());
 		}
 	}
-	
+
 	@Test
 	public void consultaPorNomeParametro() {
 		Usuario usuario = springDataUsuario.buscaPorNomeParametro("Cauê");
-			System.out.println(usuario.getLogin());
-		}
+		System.out.println(usuario.getLogin());
 	}
 
+	@Test
+	public void deletaPorNome() {
+		springDataUsuario.deletaPorNome("deletavel");
+	}
+}
