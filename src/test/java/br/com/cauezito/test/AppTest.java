@@ -49,5 +49,13 @@ public class AppTest {
 		}
 	}
 
+	@Test
+	public void atualizaRegistro() {
+		Optional<Usuario> usuario = springDataUsuario.findById(2L);
+		Usuario data = usuario.get();
+		
+		data.setNome("Amanda Marques");
+		springDataUsuario.save(data);
 
+	}
 }
