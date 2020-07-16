@@ -39,6 +39,15 @@ public class AppTest {
 		Optional<Usuario> usuario = springDataUsuario.findById(2L);
 		System.out.println(usuario.get().getNome());
 	}
+	
+	@Test
+	public void todosOsRegistros() {
+		Iterable<Usuario> lista = springDataUsuario.findAll();
+		
+		for (Usuario usuario : lista) {
+			System.out.println(usuario.getNome());
+		}
+	}
 
 
 }
